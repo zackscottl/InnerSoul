@@ -3,6 +3,7 @@ package tylerandzack.creations.innersoulgame.keylisteners;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import tylerandzack.creations.innersoulgame.windows.About;
 import tylerandzack.creations.innersoulgame.windows.Game;
 import tylerandzack.creations.innersoulgame.windows.MainMenu;
 import tylerandzack.creations.innersoulgame.windows.Options;
@@ -18,7 +19,7 @@ public class MainMenuKeyListener extends KeyAdapter {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		
+
 		if (key == KeyEvent.VK_UP) {
 			mainMenu.changeMenuState(true);
 		}
@@ -34,7 +35,8 @@ public class MainMenuKeyListener extends KeyAdapter {
 				mainMenu.frame.setVisible(false);
 				Options.options.frame.setVisible(true);
 			} else if (mainMenu.menuState == 2) {
-				// Show about
+				mainMenu.frame.setVisible(false);
+				About.about.frame.setVisible(true);
 				System.out.println("about");
 			} else if (mainMenu.menuState == 3) {
 				System.out.println("exit");

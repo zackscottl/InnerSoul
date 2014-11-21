@@ -13,21 +13,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import tylerandzack.creations.innersoulgame.InnerSoul;
-import tylerandzack.creations.innersoulgame.keylisteners.OptionsKeyListener;
+import tylerandzack.creations.innersoulgame.keylisteners.AboutKeyListener;
 
-public class Options {
+public class About {
 
-	public static Options options = new Options();
+	public static About about = new About();
 
 	public JFrame frame = new JFrame();
 	public JPanel panel = new JPanel();
-	public JLabel infoLabel = new JLabel("Coming Soon!"), backLabel = new JLabel("Back");
+	public JLabel aboutLabel = new JLabel("<html>Inner Soul is a game being developed by Tyler Olson and Zack Lemanski using Java. We started developing the game on 11-20-2014. If you would like to help out please email developers@innersoulgame.tk</html>"), backLabel = new JLabel("Back");
 
 	public int menuState;
 
-	public Options() {
+	public About() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.addKeyListener(new OptionsKeyListener(this));
+		frame.addKeyListener(new AboutKeyListener(this));
 		frame.setSize(InnerSoul.WIDTH, InnerSoul.HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setTitle(InnerSoul.TITLE);
@@ -43,12 +43,12 @@ public class Options {
 	public void drawContents() {
 		try {
 			InputStream inputStream = getClass().getResourceAsStream("/font.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(Font.PLAIN, 55);
+			Font font = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(Font.PLAIN, 55F);
 			GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			genv.registerFont(font);
 
-			infoLabel.setFont(font);
-			infoLabel.setForeground(Color.WHITE);
+			aboutLabel.setFont(font.deriveFont(24F));
+			aboutLabel.setForeground(Color.WHITE);
 
 			backLabel.setFont(font);
 			backLabel.setForeground(Color.RED);
@@ -59,7 +59,7 @@ public class Options {
 				}
 			});
 
-			panel.add(infoLabel);
+			panel.add(aboutLabel);
 			panel.add(backLabel);
 
 			frame.setVisible(true);

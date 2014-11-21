@@ -3,25 +3,24 @@ package tylerandzack.creations.innersoulgame.windows;
 import java.awt.Color;
 
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 import tylerandzack.creations.innersoulgame.InnerSoul;
 import tylerandzack.creations.innersoulgame.keylisteners.GameKeyListener;
 
 public class Game implements Runnable {
-	
+
 	public static Game game = new Game();
 
 	public JFrame frame = new JFrame();
-	
+
 	private boolean running = false;
-	
+
 	public int frames, ticks;
-	
+
 	Thread thread;
 
 	public Game() {
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener(new GameKeyListener(this));
 		frame.setSize(InnerSoul.WIDTH, InnerSoul.HEIGHT);
 		frame.setTitle(InnerSoul.TITLE);
@@ -40,7 +39,7 @@ public class Game implements Runnable {
 
 		running = true;
 		thread = new Thread(this);
-		thread.start();		
+		thread.start();
 	}
 
 	public synchronized void stop() {
