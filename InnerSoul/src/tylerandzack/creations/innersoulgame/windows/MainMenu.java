@@ -152,7 +152,6 @@ public class MainMenu {
 				aboutLabel.setForeground(Color.WHITE);
 				exitLabel.setForeground(Color.WHITE);
 			}
-			System.out.println(menuState);
 			break;
 		case 1:
 			if (up) {
@@ -168,7 +167,6 @@ public class MainMenu {
 				aboutLabel.setForeground(Color.RED);
 				exitLabel.setForeground(Color.WHITE);
 			}
-			System.out.println(menuState);
 			break;
 		case 2:
 			if (up) {
@@ -184,7 +182,6 @@ public class MainMenu {
 				aboutLabel.setForeground(Color.WHITE);
 				exitLabel.setForeground(Color.RED);
 			}
-			System.out.println(menuState);
 			break;
 		case 3:
 			if (up) {
@@ -200,7 +197,6 @@ public class MainMenu {
 				aboutLabel.setForeground(Color.WHITE);
 				exitLabel.setForeground(Color.WHITE);
 			}
-			System.out.println(menuState);
 			break;
 		}
 	}

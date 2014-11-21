@@ -37,9 +37,7 @@ public class MainMenuKeyListener extends KeyAdapter {
 			} else if (mainMenu.menuState == 2) {
 				mainMenu.frame.setVisible(false);
 				About.about.frame.setVisible(true);
-				System.out.println("about");
 			} else if (mainMenu.menuState == 3) {
-				System.out.println("exit");
 				System.exit(0);
 			}
 		}
