@@ -11,42 +11,48 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import tylerandzack.creations.innersoulgame.InnerSoul;
 import tylerandzack.creations.innersoulgame.keylisteners.MainMenuKeyListener;
 
 public class MainMenu {
 
-	JFrame frame = new JFrame();
-	JPanel panel = new JPanel();
-	JLabel playLabel = new JLabel("Play"), optionsLabel = new JLabel("Options"), aboutLabel = new JLabel("About"), exitLabel = new JLabel("Exit");
+	public static MainMenu mainMenu;
+
+	public JFrame frame = new JFrame();
+	public JPanel panel = new JPanel();
+	public JLabel playLabel = new JLabel("Play"), optionsLabel = new JLabel("Options"), aboutLabel = new JLabel("About"), exitLabel = new JLabel("Exit");
 
 	public int menuState;
 
-	public MainMenu(String TITLE, int WIDTH, int HEIGHT) {
-		frame.setTitle(TITLE);
-		frame.setSize(WIDTH, HEIGHT);
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.addKeyListener(new MainMenuKeyListener(this));
-		frame.setLocationRelativeTo(null);
-		//frame.setResizable(false);
-		frame.add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		panel.setBackground(Color.DARK_GRAY);
+	public MainMenu(boolean create) {
+		if (create) {
+			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			frame.addKeyListener(new MainMenuKeyListener(this));
+			frame.setSize(InnerSoul.WIDTH, InnerSoul.HEIGHT);
+			frame.setLocationRelativeTo(null);
+			frame.setTitle(InnerSoul.TITLE);
+			frame.setResizable(false);
+			frame.add(panel);
+			
+			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+			panel.setBackground(Color.DARK_GRAY);
 
-		//System.out.println(Color.DARK_GRAY.toString());
-
-		drawContents();
+			drawContents();
+			} else {
+				return;
+		}
 	}
 
 	public void drawContents() {
 		try {
 			InputStream inputStream = getClass().getResourceAsStream("/font.ttf");
-            Font font = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(Font.PLAIN, 55);
-            GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			Font font = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(Font.PLAIN, 55);
+			GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			genv.registerFont(font);
-			
+
 			playLabel.setFont(font);
 			playLabel.setForeground(Color.RED);
-			
+
 			optionsLabel.setFont(font);
 			optionsLabel.setForeground(Color.WHITE);
 
@@ -60,11 +66,12 @@ public class MainMenu {
 			panel.add(optionsLabel);
 			panel.add(aboutLabel);
 			panel.add(exitLabel);
-            frame.setVisible(true);
 			
+			frame.setVisible(true);
+			mainMenu = new MainMenu(false);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}   
+		}
 	}
 
 	public void changeMenuState(boolean up) { // true if user presses up, false is user presses down
