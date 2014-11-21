@@ -2,6 +2,8 @@ package tylerandzack.creations.innersoulgame.windows;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.io.InputStream;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -18,7 +20,7 @@ public class MainMenu {
 	JLabel playLabel = new JLabel("Play"), optionsLabel = new JLabel("Options"), aboutLabel = new JLabel("About"), exitLabel = new JLabel("Exit");
 
 	public int menuState;
-	
+
 	public MainMenu(String TITLE, int WIDTH, int HEIGHT) {
 		frame.setTitle(TITLE);
 		frame.setSize(WIDTH, HEIGHT);
@@ -26,7 +28,6 @@ public class MainMenu {
 		frame.addKeyListener(new MainMenuKeyListener(this));
 		frame.setLocationRelativeTo(null);
 		//frame.setResizable(false);
-		frame.setVisible(true);
 		frame.add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		panel.setBackground(Color.DARK_GRAY);
@@ -36,23 +37,34 @@ public class MainMenu {
 		drawContents();
 	}
 
-	public void drawContents() {		
-		playLabel.setFont(new Font("verdana", Font.PLAIN, 48));
-		playLabel.setForeground(Color.RED);
-		
-		optionsLabel.setFont(new Font("verdana", Font.PLAIN, 48));
-		optionsLabel.setForeground(Color.WHITE);
-		
-		aboutLabel.setFont(new Font("verdana", Font.PLAIN, 48));
-		aboutLabel.setForeground(Color.WHITE);
-		
-		exitLabel.setFont(new Font("verdana", Font.PLAIN, 48));
-		exitLabel.setForeground(Color.WHITE);
-		
-		panel.add(playLabel);
-		panel.add(optionsLabel);
-		panel.add(aboutLabel);
-		panel.add(exitLabel);
+	public void drawContents() {
+		try {
+			InputStream inputStream = getClass().getResourceAsStream("/font.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(Font.PLAIN, 55);
+            GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			genv.registerFont(font);
+			
+			playLabel.setFont(font);
+			playLabel.setForeground(Color.RED);
+			
+			optionsLabel.setFont(font);
+			optionsLabel.setForeground(Color.WHITE);
+
+			aboutLabel.setFont(font);
+			aboutLabel.setForeground(Color.WHITE);
+
+			exitLabel.setFont(font);
+			exitLabel.setForeground(Color.WHITE);
+
+			panel.add(playLabel);
+			panel.add(optionsLabel);
+			panel.add(aboutLabel);
+			panel.add(exitLabel);
+            frame.setVisible(true);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}   
 	}
 
 	public void changeMenuState(boolean up) { // true if user presses up, false is user presses down
