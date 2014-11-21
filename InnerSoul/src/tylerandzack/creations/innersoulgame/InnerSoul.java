@@ -5,6 +5,6 @@ import tylerandzack.creations.innersoulgame.windows.MainMenu;
 public class InnerSoul {
 
 	public static void main(String[] args) {
-		new MainMenu("Inner Soul", 800, 600);
+		new MainMenu("Inner Soul", 300, 300);
 	}
 }

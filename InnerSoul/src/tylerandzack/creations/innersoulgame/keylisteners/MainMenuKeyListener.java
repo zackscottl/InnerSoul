@@ -24,7 +24,20 @@ public class MainMenuKeyListener extends KeyAdapter {
 		}
 
 		if (key == KeyEvent.VK_ENTER) {
-
+			if (mainMenu.menuState == 0) {
+				// Play game
+				System.out.println("play");
+			} else if (mainMenu.menuState == 1) {
+				// Show options
+				System.out.println("options");
+			} else if (mainMenu.menuState == 2) {
+				// Show about
+				System.out.println("about");
+			} else if (mainMenu.menuState == 3) {
+				// Exit
+				System.out.println("exit");
+				System.exit(0);
+			}
 		}
 	}
 }
