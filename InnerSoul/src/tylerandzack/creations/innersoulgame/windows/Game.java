@@ -27,13 +27,13 @@ public class Game {
 			run();
 		}
 	}
-	
+
 	private void init() {
 		// Load key stuff before everything else
 	}
-	
+
 	private void run() {
-		while(running) {
+		while (running) {
 			init();
 			// Game runs here
 		}
