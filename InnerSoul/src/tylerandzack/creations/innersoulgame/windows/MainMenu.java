@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import tylerandzack.creations.innersoulgame.GlobalVars;
 import tylerandzack.creations.innersoulgame.InnerSoul;
 import tylerandzack.creations.innersoulgame.keylisteners.MainMenuKeyListener;
 
@@ -29,9 +30,9 @@ public class MainMenu {
 		if (create) {
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.addKeyListener(new MainMenuKeyListener(this));
-			frame.setSize(InnerSoul.WIDTH, InnerSoul.HEIGHT);
+			frame.setSize(GlobalVars.WIDTH, GlobalVars.HEIGHT);
 			frame.setLocationRelativeTo(null);
-			frame.setTitle(InnerSoul.TITLE);
+			frame.setTitle(GlobalVars.TITLE);
 			frame.setResizable(false);
 			frame.add(panel);
 
@@ -56,7 +57,7 @@ public class MainMenu {
 			playLabel.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
 					frame.setVisible(false);
-					Game.game.frame.setVisible(true);
+					new Game(800, 600, "InnerSoul", new InnerSoul());
 				}
 
 				public void mouseEntered(MouseEvent e) {

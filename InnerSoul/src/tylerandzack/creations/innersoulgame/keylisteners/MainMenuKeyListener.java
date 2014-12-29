@@ -3,6 +3,7 @@ package tylerandzack.creations.innersoulgame.keylisteners;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import tylerandzack.creations.innersoulgame.InnerSoul;
 import tylerandzack.creations.innersoulgame.windows.About;
 import tylerandzack.creations.innersoulgame.windows.Game;
 import tylerandzack.creations.innersoulgame.windows.MainMenu;
@@ -30,7 +31,7 @@ public class MainMenuKeyListener extends KeyAdapter {
 		if (key == KeyEvent.VK_ENTER) {
 			if (mainMenu.menuState == 0) {
 				mainMenu.frame.setVisible(false);
-				Game.game.frame.setVisible(true);
+				new Game(800, 600, "InnerSoul", new InnerSoul());
 			} else if (mainMenu.menuState == 1) {
 				mainMenu.frame.setVisible(false);
 				Options.options.frame.setVisible(true);

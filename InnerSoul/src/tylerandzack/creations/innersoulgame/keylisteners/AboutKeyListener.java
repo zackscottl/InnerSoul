@@ -3,8 +3,8 @@ package tylerandzack.creations.innersoulgame.keylisteners;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import tylerandzack.creations.innersoulgame.windows.MainMenu;
 import tylerandzack.creations.innersoulgame.windows.About;
+import tylerandzack.creations.innersoulgame.windows.MainMenu;
 
 public class AboutKeyListener extends KeyAdapter {
 

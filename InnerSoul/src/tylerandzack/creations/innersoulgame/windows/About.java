@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import tylerandzack.creations.innersoulgame.InnerSoul;
+import tylerandzack.creations.innersoulgame.GlobalVars;
 import tylerandzack.creations.innersoulgame.keylisteners.AboutKeyListener;
 
 public class About {
@@ -28,9 +28,9 @@ public class About {
 	public About() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener(new AboutKeyListener(this));
-		frame.setSize(InnerSoul.WIDTH, InnerSoul.HEIGHT);
+		frame.setSize(GlobalVars.WIDTH, GlobalVars.HEIGHT);
 		frame.setLocationRelativeTo(null);
-		frame.setTitle(InnerSoul.TITLE);
+		frame.setTitle(GlobalVars.TITLE);
 		frame.setResizable(false);
 		frame.add(panel);
 
